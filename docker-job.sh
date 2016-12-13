@@ -20,6 +20,17 @@ else
     exit 3
   fi
 
+
+  # sometimes download fails leaving *.part files causing build to fail - see
+  # https://projects.engineering.redhat.com/browse/SET-12
+  # so we remove those before launching the build
+  for file in $(find . -name '*.part')
+  do
+      echo -n "Partial file found: ${file}"
+      rm -f "${file}"
+      echo " - and deleted."
+  done
+
   readonly OLD_RELEASES_FOLDER=${OLD_RELEASES_FOLDER:-'/opt/old-as-releases'}
 
   readonly DOCKER_IMAGE=${DOCKER_IMAGE:-'rhel6-jenkins-shared-slave'}
