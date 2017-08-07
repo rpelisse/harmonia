@@ -24,6 +24,10 @@ readonly OLD_RELEASES_FOLDER=${OLD_RELEASES_FOLDER:-/opt/old-as-releases}
 export PATH=${MAVEN_HOME}/bin:${PATH}
 export MAVEN_OPTS="-Xmx1024m -Xms512m -XX:MaxPermSize=256m"
 
+echo ===========================================
+ls ${LOCAL_REPO_DIR}/org/jboss/as/jboss-as-testsuite-shared/*
+echo ===========================================
+
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dsurefire.forked.process.timeout=90000"
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dskip-download-sources -B"
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Djboss.test.mixed.domain.dir=${OLD_RELEASES_FOLDER}"
