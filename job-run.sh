@@ -23,7 +23,6 @@ readonly OLD_RELEASES_FOLDER=${OLD_RELEASES_FOLDER:-/opt/old-as-releases}
 
 export PATH=${MAVEN_HOME}/bin:${PATH}
 export MAVEN_OPTS="-Xmx1024m -Xms512m -XX:MaxPermSize=256m"
-export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.repo.local=${LOCAL_REPO_DIR}"
 
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dsurefire.forked.process.timeout=90000"
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dskip-download-sources -B"
@@ -36,4 +35,4 @@ su "${USER}" -c "../tools/maven/bin/mvn clean"
 cd ..
 
 chmod +x ./integration-tests.sh
-su "${USER}" -c "bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS}"
+su "${USER}" -c "bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS} -Dmaven.repo.local=${LOCAL_REPO_DIR}"
