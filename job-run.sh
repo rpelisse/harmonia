@@ -32,7 +32,5 @@ TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dmaven.test.failure.ignore=false"
 
 chmod +x ${MAVEN_HOME}/bin/mvn
 
-cd testsuite
-
 chmod +x ./integration-tests.sh
 bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS}
