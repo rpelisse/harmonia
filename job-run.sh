@@ -19,7 +19,7 @@ readonly LOCAL_REPO_DIR=/workspace/maven-local-repository
 readonly MAVEN_HOME=/maven_home
 export MAVEN_HOME
 
-readonly OLD_RELEASES_FOLDER=${OLD_RELEASES_FOLDER:-/opt/old-as-releases}
+readonly OLD_RELEASES_FOLDER=${OLD_RELEASES_FOLDER:-'/opt/old-as-releases'}
 
 export PATH=${MAVEN_HOME}/bin:${PATH}
 export MAVEN_OPTS="-Xmx1024m -Xms512m -XX:MaxPermSize=256m"
@@ -32,5 +32,7 @@ TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dmaven.test.failure.ignore=false"
 
 chmod +x ${MAVEN_HOME}/bin/mvn
 
+cd testsuite
+
 chmod +x ./integration-tests.sh
-su "${USER}" -c "bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS}"
+bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS}
