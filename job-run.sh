@@ -30,10 +30,7 @@ TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dskip-download-sources -B"
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Djboss.test.mixed.domain.dir=${OLD_RELEASES_FOLDER}"
 TESTSUITE_OPTS="${TESTSUITE_OPTS} -Dmaven.test.failure.ignore=false"
 
-cd testsuite
-chmod +x ../tools/maven/bin/mvn
-su "${USER}" -c "../tools/maven/bin/mvn clean"
-cd ..
+chmod +x ${MAVEN_HOME}/bin/mvn
 
 chmod +x ./integration-tests.sh
 su "${USER}" -c "bash -x ./integration-tests.sh -DallTests ${TESTSUITE_OPTS}"
