@@ -14,7 +14,7 @@ fi
 readonly LOCAL_REPO_DIR=${LOCAL_REPO_DIR:-${WORKSPACE}/maven-local-repository}
 readonly MEMORY_SETTINGS=${MEMORY_SETTINGS:-'-Xmx1024m -Xms512m -XX:MaxPermSize=256m'}
 
-readonly MAVEN_SETTINGS_XML=${MAVEN_SETTINGS_XML:-'./harmonia/settings.xml'}
+readonly MAVEN_SETTINGS_XML=${MAVEN_SETTINGS_XML:-"$(pwd)/harmonia/settings.xml"}
 readonly MAVEN_WAGON_HTTP_POOL=${WAGON_HTTP_POOL:-'false'}
 readonly MAVEN_WAGON_HTTP_MAX_PER_ROUTE=${MAVEN_WAGON_HTTP_MAX_PER_ROUTE:-'3'}
 
